@@ -3,5 +3,6 @@ diffusers
 transformers
 accelerate
 fastapi
-uvicorn
+uvicorn[standard]
 pillow
+xformers
