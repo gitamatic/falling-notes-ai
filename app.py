@@ -12,10 +12,11 @@ class Request(BaseModel):
 
 pipe = StableDiffusionXLPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-base-1.0",
-    torch_dtype=torch.float16
+    torch_dtype=torch.float16,
+    use_safetensors=True
 )
 pipe.to("cuda")
-pipe.enable_xformers_memory_efficient_attention()
+pipe.enable_model_cpu_offload()
 
 @app.post("/generate")
 async def generate(data: Request):
